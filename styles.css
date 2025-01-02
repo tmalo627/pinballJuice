@@ -1,0 +1,143 @@
+body {
+    background: no-repeat url(/images/background_2.png);
+    background-color: rgb(35,35,35);
+    background-position: center top;
+}
+
+h1 {
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 5px;
+}
+
+h2 {
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    border-radius: 6px;
+    border-width: 3px;
+
+}
+
+table {
+    border-color: lime;
+    border-width: 3px;
+    border-style: ridge;
+    border-radius: 4px;
+    background-image: linear-gradient(to left bottom, darkgreen,silver,lime,grey,silver,grey,lime,silver,darkgreen);
+    color:lime;
+    text-shadow: green 1px 1px;
+    /* text-shadow: silver 1px 1px; */
+}
+
+table th, td {
+    padding: 2px 4px 2px 4px;
+    border-color: lime;
+    background-color: rgb(35,35,35);
+    border-width: 1px;
+    border-style: solid;
+}
+
+table td {
+    text-align: right;
+}
+
+.limeBorder {
+    border-color: lime;
+    border-style: ridge;
+    background-color: rgb(35,35,35);
+    color:lime;
+    text-shadow: darkgreen 2px 2px;    
+}
+
+.navButton {
+    width: 138px;
+    height: 138px;
+    background-image: url("/images/navIcon.png");
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    transform: scale(25%);
+}
+
+.allNavLinks {
+    border-radius: 3px;
+    border-style: ridge;
+    /* border-color: orange; */
+    border-color: silver;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 5px;
+    /* background-color: rgb(220,220,220); */
+}
+
+.navLink {
+    padding: 2px 20px 2px 20px;
+    background-image: radial-gradient(white, rgb(220,220,220), rgb(10,180,180));
+}
+
+.headers {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.leagueNavClass {
+    width: 50%;
+    margin: auto;
+    background-color: cornsilk;
+    display: flex;
+    justify-content: space-around;
+}
+
+.registration {
+    padding: 30px;
+    width: 75%;
+    margin: auto;
+}
+
+.regFormClass {
+    border-radius: 2px;
+    border-style: solid;
+    border-color: rgb(35,35,35);
+    border-width: 1px;
+    padding: 10px;
+    background-color: linen;
+    width: 45%;
+    margin: auto;
+}
+
+.tables {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.deadHeader {
+    background-image: linear-gradient(to left bottom, darkgreen,silver,lime,grey,silver,grey,lime,silver,darkgreen);
+}
+
+.leftAlign {
+    text-align: left;
+}
+
+.centerAlign {
+    text-align: center;
+    margin: auto;
+}
+
+.rightAlign {
+    text-align: right;
+}
+
+.hidden {
+    display: none;
+}
