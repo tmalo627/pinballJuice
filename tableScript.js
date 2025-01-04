@@ -20,7 +20,7 @@ const playerHeader = document.getElementById("playerHeader");
 
 // Add event listeners
 updateSeasonScoresBtn.addEventListener("click",calcAvg);
-addPlayerBtn.addEventListener("click",submitForm);
+// addPlayerBtn.addEventListener("click",submitForm);
 groupHeader.addEventListener("click",function(){sortTable(currentWeekTable,1);});
 playerHeader.addEventListener("click",function(){sortTable(currentWeekTable,0);});
 
