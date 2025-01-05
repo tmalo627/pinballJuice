@@ -2,8 +2,6 @@ $(document).ready(function() {
 
 
 const currentWeekTable = document.getElementById("currentWeekScores");
-const populateWeeklyScoreboardBtn = document.getElementById("populateWeeklyScoreboard");
-populateWeeklyScoreboardBtn.addEventListener("click",createWeeklyGroups);
 
 function randomize(array) {
     let playerIndex = array.length;
@@ -34,11 +32,9 @@ let games = ["Godzilla","Venom","24","Houdini","Black Knight","NBA"];
 let gameObjects = games.map(str => ({name:str}));
 
 // complete checkin process || PULLS FROM POSTGRES
-let weeklyPlayersTableBtn = document.getElementById("createWeeklyPlayersTable");
-weeklyPlayersTableBtn.addEventListener("click",getDatabasePlayers);
 let databasePlayers = [];
 // getDatabasePlayers();
-function getDatabasePlayers() {
+$("#createWeeklyPlayersTable").click(function() {
     let weeklyCheckinDiv = document.getElementById("weeklyCheckin");
     let newTable = document.createElement("table");
     let tableHead = document.createElement("thead");
@@ -71,7 +67,8 @@ function getDatabasePlayers() {
     // this.nickname = nickname;
     // }
     // databasePlayers.push(player);
-}    
+    
+});
 
 let staticPlayers = ["Bob","Fred","Jim","Joe","Tom","Bill","Tony","Shane","Justin","George","Bruce","Peter","Kevin","Josh","Mike","Dan","Carl","Curt"];
 let staticPlayerObjects = staticPlayers.map(str => ({name:str}));
@@ -82,7 +79,7 @@ let weeklyGroupsNames = [];
 let weeklyGroups = [];
 let groupObjects = [];
 
-function createWeeklyGroups ()  {
+$("#populateWeeklyScoreboard").click(function() {
     staticPlayerObjects.forEach(obj => {weeklyPlayers.push(obj)});
     registrants.forEach(obj => {weeklyPlayers.push(obj)});
     // console.log(weeklyPlayers);
@@ -123,7 +120,8 @@ function createWeeklyGroups ()  {
         r++;
     }
     // console.log(currentWeekTable);
-}
+});
+
 // assign games to groups
 
 

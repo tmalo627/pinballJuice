@@ -8,51 +8,87 @@ class Person {
 }
 
 // Form variables
-const addPlayerForm = document.getElementById("addPlayerForm");
-const addPlayerBtn = document.getElementById("addPlayer");
+// $("#registrationForm").submit(function() {
+//     let player = new Person();
+//     player.firstname = $("#registrationForm").fname.value;
+//     player.lastname = $("#registrationForm").lname.value;
+//     player.nickname = $("#registrationForm").nickname.value;
+//     player.emailAddress = $("#registrationForm").email.value;
+//     player.phoneNumber = $("#registrationForm").phone.value;
+//     if (player.nickname) {
+//         player.name = $("#registrationForm").nickname.value
+//     }
+//     else {
+//         player.name = $("#registrationForm").fname.value + " " + $("#registrationForm").lname.value;
+//     }
+//     console.log(player);
+//     let row = document.createElement("tr");
+//     let cell0 = document.createElement("td");
+//     let cell1 = document.createElement("td");
+//     let cell2 = document.createElement("td");
+//     cell0.textContent = player.firstname;
+//     cell1.textContent = player.lastname;
+//     cell2.textContent = player.nickname;
+//     registrants.push(player);
+//     row.appendChild(cell0);
+//     row.appendChild(cell1);
+//     row.appendChild(cell2);
+//     allPlayersInfoTable.appendChild(row);
+// });
+
+// $("#addPlayer").click(function() {
+//     let player = new Person();
+//     player.firstname = $("#registrationForm").fname.value;
+//     player.lastname = $("#registrationForm").lname.value;
+//     player.nickname = $("#registrationForm").nickname.value;
+//     player.emailAddress = $("#registrationForm").email.value;
+//     player.phoneNumber = $("#registrationForm").phone.value;
+//     if (player.nickname) {
+//         player.name = $("#registrationForm").nickname.value
+//     }
+//     else {
+//         player.name = $("#registrationForm").fname.value + " " + $("#registrationForm").lname.value;
+//     }
+//     console.log(player);
+//     let row = document.createElement("tr");
+//     let cell0 = document.createElement("td");
+//     let cell1 = document.createElement("td");
+//     let cell2 = document.createElement("td");
+//     cell0.textContent = player.firstname;
+//     cell1.textContent = player.lastname;
+//     cell2.textContent = player.nickname;
+//     registrants.push(player);
+//     row.appendChild(cell0);
+//     row.appendChild(cell1);
+//     row.appendChild(cell2);
+//     allPlayersInfoTable.appendChild(row);
+// });
 
 // Table variables
+
 const currentSeasonTable = document.getElementById("currentSeasonScores");
 const allPlayersInfoTable = document.getElementById("allPlayersInfo");
-const updateSeasonScoresBtn = document.getElementById("updateSeasonScores");
-const groupHeader = document.getElementById("groupHeader");
-const playerHeader = document.getElementById("playerHeader");
 
 // Add event listeners
-updateSeasonScoresBtn.addEventListener("click",calcAvg);
-// addPlayerBtn.addEventListener("click",submitForm);
-groupHeader.addEventListener("click",function(){sortTable(currentWeekTable,1);});
-playerHeader.addEventListener("click",function(){sortTable(currentWeekTable,0);});
+$("#updateSeasonScores").click(function() {
+    let currentSeasonTableRowsLength = currentSeasonTable.rows.length;
+    for (i = 1; i < currentSeasonTableRowsLength; i++) {
+        let thisRow = currentSeasonTable.rows[i];
+        let totalPoints = Number(thisRow.cells[1].textContent);
+        let weeksPlayed = Number(thisRow.cells[2].textContent);
+        let average = (totalPoints / weeksPlayed).toFixed(2);
+        thisRow.cells[3].innerHTML = average;
+    }   
+});
+$("#groupHeader").click(function() {
+    sortTable(currentWeekTable,1)
+});
+$("#playerHeader").click(function() {
+    sortTable(currentWeekTable,0)
+});
 
 let registrants = [];
 // Define functions
-function submitForm() {
-    let player = new Person();
-    player.firstname = registrationForm.fname.value;
-    player.lastname = registrationForm.lname.value;
-    player.nickname = registrationForm.nickname.value;
-    player.emailAddress = registrationForm.email.value;
-    player.phoneNumber = registrationForm.phone.value;
-    if (player.nickname) {
-        player.name = registrationForm.nickname.value
-    }
-    else {
-        player.name = registrationForm.fname.value + " " + registrationForm.lname.value;
-    }
-    let row = document.createElement("tr");
-    let cell0 = document.createElement("td");
-    let cell1 = document.createElement("td");
-    let cell2 = document.createElement("td");
-    cell0.textContent = player.firstname;
-    cell1.textContent = player.lastname;
-    cell2.textContent = player.nickname;
-    registrants.push(player);
-    row.appendChild(cell0);
-    row.appendChild(cell1);
-    row.appendChild(cell2);
-    allPlayersInfoTable.appendChild(row);
-}
-
 function sortTable(table,column) {
     // table = document.getElementById("currentWeekScores");
     tableRows = (Array.prototype.slice.call(table.querySelectorAll("tbody > tr")).slice(1));
@@ -73,17 +109,6 @@ function getObjectProperties(array) {
     )
     // connect to Postgres
     console.log(columns);
-}
-
-function calcAvg () {
-    let currentSeasonTableRowsLength = currentSeasonTable.rows.length;
-    for (i = 1; i < currentSeasonTableRowsLength; i++) {
-        let thisRow = currentSeasonTable.rows[i];
-        let totalPoints = Number(thisRow.cells[1].textContent);
-        let weeksPlayed = Number(thisRow.cells[2].textContent);
-        let average = (totalPoints / weeksPlayed).toFixed(2);
-        thisRow.cells[3].innerHTML = average;
-    }        
 }
 
 // Connect to Postgres required

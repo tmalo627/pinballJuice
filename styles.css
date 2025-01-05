@@ -1,9 +1,8 @@
 body {
-    width: 1024px;
-    height: 1024px;
+    height: 100vh;
     background: no-repeat url(/images/background_2.png);
     background-color: rgb(35,35,35);
-    background-position: center top;
+    background-position: center top 15%;
 }
 
 h1 {
@@ -55,6 +54,7 @@ table td {
 }
 
 .navButton {
+    float: right;
     width: 138px;
     height: 138px;
     background-image: url("/images/navIcon.png");

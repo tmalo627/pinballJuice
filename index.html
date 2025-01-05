@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="script.js"></script>
-        <script src="navScript.js"></script>
         <script src="tableScript.js"></script>
         <script src="runWeek.js"></script>
     </head>
@@ -17,9 +16,6 @@
             <h1 class="limeBorder">Pinball Juice Arcade & Juice Bar</h1>
         </header>
         <main>
-            <span>
-                <button class="navButton" id="nav"></button> 
-            </span>
             <div class="topnav">
                 <span id="myLinks" class="allNavLinks">
                     <a id="homeNav" class="navLink" href="#home">Home</a>
@@ -45,7 +41,7 @@
                     <a id="weeklyScoresNav" href="#weeklyScoresDiv">Weekly scores</a>
                 </div>
                     <div id="registrationDiv" class="registration">
-                        <form id="registrationForm" class="regFormClass">
+                        <form id="registrationForm" class="regFormClass" action="formHandler.php" method="POST">
                             <label for="fname">First name: </label>
                             <input type="text" id="fname" name="fname" placeholder="Enter first name...">
                             <br>
@@ -61,7 +57,7 @@
                             <label for="phone">Phone number: </label>
                             <input type="tel" id="phone" name="phone" placeholder="312-555-1212">
                             <br>
-                            <input type="submit">Register</input>
+                            <input type="submit" value="Register"></input>
                             <!-- <button id="addPlayer">Register</button> -->
                         </form>
                         <div class="tables">

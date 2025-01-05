@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 $("#nav").click(function() {
-    $("#myLinks").toggle();
+    $("#myLinks").toggle("slow");
 });
 
 $("#homeNav").click(function() {
@@ -28,6 +28,13 @@ $("#leagueNav").click(function() {
     $("#about").hide();
     goToSeasonScoreboard();
 });
+
+function goToSeasonScoreboard() {
+    $("#allScoreboards").show();
+    $("#seasonScoreboard").show();
+    $("#registrationDiv").hide();
+    $("#fullWeeklyScores").hide();
+}
 
 $("#contactNav").click(function() {
     $("#home").hide();
@@ -64,5 +71,6 @@ $("#aboutNav").click(function() {
         $("#registrationDiv").hide();
         $("#fullWeeklyScores").show();
     });
+
 
 });
