@@ -1,8 +1,16 @@
 <?php
-echo "Hello World";
-echo ["fname"];
-echo ["lname"];
-echo ["nickname"];
-echo ["email"];
-echo ["phone"];
+$fname = $_POST["fname"];
+$lname = $_POST["lname"];
+$nickname =  $_POST["nickname"];
+$email = $_POST["email"];
+$phone =  $_POST["phone"];
+
+echo $nickname."'s real name is ".$fname." ".$lname.". Shhh!! Don't tell anyone."
+
+// $conn = mysqli_connect("localhost","postgres","chestNut(red).27","pinball");
+// mysqli_query($conn, $sql);
+pg_connect("host=localhost,database=pinball,user=postgres, password=chestNut(red).27")
+pg_query("INSERT INTO players (firstname,lastname,nickname,email,phone) VALUES ('$fname','$lname','$nickname','$email','$phone')");
+exit;
+
 ?>
