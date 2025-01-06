@@ -7,7 +7,7 @@ $phone =  $_POST["phone"];
 
 echo $nickname."'s real name is ".$fname." ".$lname.". Shhh!! Don't tell anyone."
 
-// $conn = mysqli_connect("localhost","postgres","chestNut(red).27","pinball");
+// $conn = mysqli_connect("localhost","postgres","","pinball");
 // mysqli_query($conn, $sql);
 pg_connect("host=localhost,database=pinball,user=postgres, password=chestNut(red).27")
 pg_query("INSERT INTO players (firstname,lastname,nickname,email,phone) VALUES ('$fname','$lname','$nickname','$email','$phone')");
