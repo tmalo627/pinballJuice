@@ -1,5 +1,8 @@
 from flask import Flask, request, jsonify, render_template
+from dotenv import load_dotenv
 import os, psycopg2
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -7,8 +10,8 @@ def get_db_connection():
     conn = psycopg2.connect(
         host='localhost',
         database='pinball',
-        user=os.environ['DB_USERNAME'],
-        password=os.environ['DB_PASSWORD'],
+        user=os.environ['DATABASE_USER'],
+        password=os.environ['DATABASE_PASSWORD'],
     )
     return conn
 
@@ -37,7 +40,7 @@ def submit_form():
                 phone)
     )
 
-    conn.cmmit()
+    conn.commit()
     cur.close()
     conn.close()
     
