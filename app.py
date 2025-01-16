@@ -1,22 +1,47 @@
-from flask import Flask, request, redirect, url_for, render_template_string
-import psycopg2
+from flask import Flask, request, jsonify, render_template
+import os, psycopg2
 
 app = Flask(__name__)
 
-# Database connection
-conn = psycopg2.connect(
-    host="localhost",
-    database="pinball",
-    user="postgres",
-    password="yourdbpassword"
-)
-cursor = conn.cursor()
+def get_db_connection():
+    conn = psycopg2.connect(
+        host='localhost',
+        database='pinball',
+        user=os.environ['DB_USERNAME'],
+        password=os.environ['DB_PASSWORD'],
+    )
+    return conn
 
 @app.route('/')
 def index():
-    return render_template_string('''<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Submit Form</title> </head> <body> <form action="/submit" method="post"> <label for="name">Name:</label> <input type="text" id="name" name="name" required> <br> <label for="email">Email:</label> <input type="email" id="email" name="email" required> <br> <button type="submit">Submit</button> </form> </body> </html>''')
+    return render_template('index.html')
 
-@app.route('/submit', methods=['POST']) def submit_form(): name = request.form['name'] email = request.form['email']'''
-)
+@app.route('/submit', methods=['POST'])
+def submit_form():
+    fname = request.form['fname']
+    lname = request.form['lname']
+    nickname = request.form['nickname']
+    email = request.form['email']
+    phone = request.form['phone']
+    # connect to postgres db and insert data to players table
 
-@app.route('/submit', methods=['POST']) def submit_form(): name = request.form['name'] email = request.form['email']
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute('INSERT INTO players (firstname, lastname, nickname, email, phone)'
+                'VALUES(%s, %s, %s, %s, %s)',
+                (fname,
+                lname,
+                nickname,
+                email,
+                phone)
+    )
+
+    conn.cmmit()
+    cur.close()
+    conn.close()
+    
+    return render_template('formAccepted.html')
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
