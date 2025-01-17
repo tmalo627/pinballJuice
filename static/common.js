@@ -1,5 +1,23 @@
 $(document).ready(function() {
 
+function setMainHeight() {
+    const viewportHeight = $(window).outerHeight(true);
+    const headerHeight = $("header").outerHeight();
+    const headerVh = ((1 - (headerHeight/viewportHeight)) * 100);
+    // const mainHeight = (viewportHeight - headerHeight);
+    $("main").css("height", headerVh - 4 + "vh");
+    console.log(headerVh);
+}
+
+setMainHeight();
+
+$(window).resize(function() {
+    setMainHeight();
+});
+
+// $("#testBtn").click(function() {
+//     logMain();
+// });
 
 $("#nav").click(function() {
     $("#myLinks").toggle("slow");
