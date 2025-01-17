@@ -13,7 +13,7 @@
     </head>
     <body>
         <header>
-            <h1 class="limeBorder">Pinball Juice Arcade & Juice Bar</h1>
+            <h1 class="headers">Pinball Juice Arcade & Juice Bar</h1>
             <div class="topnav">
                 <span id="myLinks" class="allNavLinks">
                     <a id="homeNav" class="navLink" href="./index.html">Home</a>
@@ -30,7 +30,7 @@
                 <a id="seasonScoreboardNav" href="#seasonScoreboardDiv">Season Scoreboard</a>
                 <a id="weeklyScoresNav" href="#weeklyScoresDiv">Weekly scores</a>
             </div>
-            <div id="registrationDiv" class="registration, hidden">
+            <div id="registrationDiv" class="registration, fullHeight, hidden">
                 <form id="registrationForm" class="regFormClass" action="http://localhost:5000/submit" method="POST">
                     <label for="fname">First name: </label>
                     <input type="text" id="fname" name="fname" placeholder="Enter first name..." required>
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div id="scoreboards">
-                <div id="seasonScoreboard">
+                <div id="seasonScoreboard"  class="fullHeight">
                     <div class="tables">
                         <table id="currentSeasonScores">
                             <caption>Current Season Scores</caption>
@@ -99,7 +99,7 @@
                     </div>
                     <button id="updateSeasonScores">Update</button>
                 </div>
-                <div id="fullWeeklyScores" class="hidden">
+                <div id="fullWeeklyScores" class="fullHeight, hidden">
                     <button id="createWeeklyPlayersTable">Create Weekly Players Table</button>        
                     <div id="weeklyCheckin">
                     </div>
